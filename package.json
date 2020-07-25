@@ -1,0 +1,15 @@
+{
+  "name": "haushaltshilfe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node L06_Server/Server/Server.js"
+  },
+  "author": "laura",
+  "license": "ISC",
+  "dependencies": {
+    "@types/mongodb": "^3.5.20",
+    "mongodb": "^3.5.8"
+  }
+}
