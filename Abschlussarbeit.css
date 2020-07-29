@@ -1,0 +1,132 @@
+body{
+    background-color: lightgray;
+    margin: 0;
+}
+
+h1, h2, h3, p{
+    text-align: center;
+}
+
+#gridContainer{
+    display: flex;
+}
+
+#outerContainer{
+    padding: 16px;
+}
+
+#canvasSettings, #symbolSettings, #previewSettings, #drawingCanvas, #pictureName, #pictureCta, #previews{
+    border: 1px solid black;
+}
+
+.drawAbleIcon{
+    width: 96px;
+}
+
+#symbolSettings{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+#star svg{
+    fill: yellow;
+}
+
+#triangle svg{
+    fill: orange;
+}
+
+#rectangle svg{
+    fill: green;
+}
+
+#circle svg{
+    fill: red;
+    
+}
+
+path, circle{
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+path:hover, circle:hover{
+    opacity: 0.4;
+    transition: all .2s ease-in-out;
+}
+
+#rightContainer{
+    width: 60%;
+
+}
+
+#leftContainer{
+    width: 40%;
+}
+
+#leftContainer, #rightContainer{
+    padding: 32px;
+}
+
+#drawingCanvas{
+    background-color: black;
+    border: none;
+}
+
+.sizeText{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+#canvasSettings{
+    display: flex;
+}
+
+#canvasSmall{
+    width: 25%;
+    background-color: black;
+}
+
+#canvasMedium{
+    width: 35%;
+    background-color: red;
+}
+
+#canvasBig{
+    width: 40%;
+    background-color: green;
+}
+
+#canvasSmall, #canvasMedium, #canvasBig{
+    height: 96px;
+    margin: 8px;
+    cursor: pointer;
+    position: relative;
+}
+
+#canvasSmall:hover, #canvasMedium:hover, #canvasBig:hover{
+    opacity: 0.4;
+    transition: all .2s ease-in-out;
+}
+
+
+#pictureName, #pictureCta, #previews{
+    width: 100%;
+    text-align: center;
+    background-color: lightgray;
+}
+
+#pictureCta{
+    background-color: white;
+    padding: 8px;
+}
+
+#pictureName{
+    margin-bottom: 8px;
+}
+
+

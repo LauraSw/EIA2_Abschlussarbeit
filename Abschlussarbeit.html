@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abschlussarbeit</title>
+    <script src="Canvas.js"></script>
+    <script src="Symbols.js"></script>
+    <script src="Star.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Rectangle.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Main.js"></script>
+    <link rel="stylesheet" type="text/css" href="Abschlussarbeit.css"/>
+    
+</head>
+<body>
+    <div id="outerContainer">
+        <h1>Design your magical picture</h1>
+        <div id="gridContainer">
+            <div id="leftContainer">
+                <div id="canvasContainer">
+                    <h2>Drawing area</h2>
+                    <p>Chosse drawing area</p>
+                    <div id="canvasSettings">
+                        <div id="canvasSmall"><p class="sizeText">Small</p></div>
+                        <div id="canvasMedium"><p class="sizeText">Medium</p></div>
+                        <div id="canvasBig"><p class="sizeText">Big</p></div>
+                    </div>
+                </div>
+                <div id="symbolContainer">
+                    <h2>Symbols</h2>
+                    <p>Place symbols in drawing area</p>
+                    <div id="symbolSettings">
+                        <div id="star" class="drawAbleIcon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns:v="https://vecta.io/nano"><path d="M512 197.816l-186.04-12.23L255.898 9.57l-70.063 176.016L0 197.816l142.534 121.026-46.772 183.59L255.898 401.2l160.137 101.22-46.772-183.59z"/></svg>
+                        </div>
+                        <div id="triangle" class="drawAbleIcon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 945 945" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" xmlns:v="https://vecta.io/nano"><path d="M472.445-.001l472.438 944.886H0L472.445-.001z"/></svg>
+                        </div>
+                        <div id="rectangle" class="drawAbleIcon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 945 945" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" xmlns:v="https://vecta.io/nano"><path d="M354.33.214h236.22v944.882H354.33z"/></svg>
+                        </div>
+                        <div id="circle" class="drawAbleIcon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 945 945" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" xmlns:v="https://vecta.io/nano"><circle cx="567.881" cy="470.423" r="246.766" transform="matrix(1.91453 0 0 1.91453 -614.782 -428.198)"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <div id="previewContainer">
+                    <h2>Preview</h2>
+                    <div id="previewSettings">
+                        <select id="previews">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="vw">VW</option>
+                            <option value="audi" selected>Audi</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="rightContainer">
+                <canvas id="drawingCanvas">Your browser does not support the HTML canvas tag.</canvas>
+                <form action="/action_page.php">
+                    <input type="text" id="pictureName" name="pictureName" placeholder="Mame your picture">
+                    <input type="submit" id="pictureCta" value="Save picture">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
