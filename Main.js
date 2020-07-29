@@ -5,100 +5,119 @@ var Abschlussarbeit;
     let canvasSmall;
     let canvasMedium;
     let canvasBig;
-    let canvasSmallObject = new Abschlussarbeit.Canvas("60%", "#00ffff");
-    let canvasMediumObject = new Abschlussarbeit.Canvas("80%", "#ff00ff");
-    let canvasBigbject = new Abschlussarbeit.Canvas("100%", "#ff0000");
-    let canvasLeft;
-    let canvasTop;
     let starSVG;
     let triangleSVG;
     let rectangleSVG;
     let circleSVG;
-    let symbols = [];
+    Abschlussarbeit.symbols = [];
     let circle;
     let rectangle;
     let star;
     let triangle;
-    let updateSymbolPos = false;
+    let clearPicture;
+    Abschlussarbeit.isSymbolHit = false;
     function handleLoad(_event) {
         //Canvas Set Up
         Abschlussarbeit.canvasElement = document.querySelector("canvas");
-        Abschlussarbeit.canvasElement?.addEventListener("click", getMousePosition);
-        if (!Abschlussarbeit.canvasElement)
+        if (!Abschlussarbeit.canvasElement) {
             return;
-        Abschlussarbeit.crc2 = Abschlussarbeit.canvasElement.getContext("2d");
-        Abschlussarbeit.canvasElement.style.width = '100%';
-        Abschlussarbeit.canvasElement.style.height = '400px';
-        Abschlussarbeit.canvasElement.width = Abschlussarbeit.canvasElement.offsetWidth;
-        Abschlussarbeit.canvasElement.height = Abschlussarbeit.canvasElement.offsetHeight;
-        canvasLeft = Abschlussarbeit.canvasElement.offsetLeft + Abschlussarbeit.canvasElement.clientLeft;
-        canvasTop = Abschlussarbeit.canvasElement.offsetTop + Abschlussarbeit.canvasElement.clientTop;
-        //Change Width of Elements
+        }
+        else {
+            Abschlussarbeit.crc2 = Abschlussarbeit.canvasElement.getContext("2d");
+            Abschlussarbeit.canvasObject = new Abschlussarbeit.Canvas(800, 400);
+        }
+        Abschlussarbeit.canvasElement?.addEventListener("click", getMousePosition);
+        // canvasElement.width  = canvasElement.offsetWidth;
+        // canvasElement.height = canvasElement.offsetHeight;
+        // canvasLeft = canvasElement.offsetLeft + canvasElement.clientLeft;
+        // canvasTop = canvasElement.offsetTop + canvasElement.clientTop;
+        //- Clear Canvas -//
+        clearPicture = document.getElementById("clearPicture");
+        clearPicture.addEventListener("click", function () {
+            Abschlussarbeit.symbols = [];
+            Abschlussarbeit.crc2.clearRect(0, 0, Abschlussarbeit.canvasElement.width, Abschlussarbeit.canvasElement.height);
+            Abschlussarbeit.canvasObject.drawCanvas();
+            console.log(Abschlussarbeit.symbols);
+        });
+        //Change Width of Canvas
         canvasSmall = document.getElementById("canvasSmall");
         canvasSmall.addEventListener("click", function () {
-            canvasSmallObject.drawCanvas();
+            if (Abschlussarbeit.canvasElement) {
+                Abschlussarbeit.canvasObject.set(400, "black");
+            }
         });
         canvasMedium = document.getElementById("canvasMedium");
         canvasMedium.addEventListener("click", function () {
-            canvasMediumObject.drawCanvas();
+            if (Abschlussarbeit.canvasElement) {
+                Abschlussarbeit.canvasObject.set(600, "red");
+            }
         });
         canvasBig = document.getElementById("canvasBig");
         canvasBig.addEventListener("click", function () {
-            canvasBigbject.drawCanvas();
+            if (Abschlussarbeit.canvasElement) {
+                Abschlussarbeit.canvasObject.set(800, "green");
+            }
         });
         //Click SVG
-        starSVG = document.getElementById("star");
-        starSVG.addEventListener("click", function () {
-            symbols.push(new Abschlussarbeit.Star());
-        });
-        triangleSVG = document.getElementById("triangle");
-        triangleSVG.addEventListener("click", function () {
-            symbols.push(new Abschlussarbeit.Triangle());
-        });
+        // starSVG = <HTMLDivElement>document.getElementById("star");
+        // starSVG.addEventListener("click", function(){
+        //     symbols.push(new Star());
+        // });
+        // triangleSVG = <HTMLDivElement>document.getElementById("triangle");
+        // triangleSVG.addEventListener("click", function(){
+        //     symbols.push(new Triangle());
+        // });
         rectangleSVG = document.getElementById("rectangle");
         rectangleSVG.addEventListener("click", function () {
-            symbols.push(new Abschlussarbeit.Rectangle());
+            Abschlussarbeit.symbols.push(new Abschlussarbeit.Rectangle());
         });
-        circleSVG = document.getElementById("circle");
-        circleSVG.addEventListener("click", function () {
-            circle = new Abschlussarbeit.Circle();
-            symbols.push(new Abschlussarbeit.Circle());
-        });
-        document.addEventListener("click", test);
+        // // circleSVG = <HTMLDivElement>document.getElementById("circle");
+        // // circleSVG.addEventListener("click", function(){
+        // //     symbols.push(new Circle());
+        // // });
+        // //document.addEventListener("click", test);
     }
     function getMousePosition(_event) {
-        Abschlussarbeit.xMousePosition = _event.clientX - canvasLeft;
-        Abschlussarbeit.yMousePosition = _event.clientY - canvasTop;
-        if (updateSymbolPos) {
-            updateSymbol();
+        //- Mouse Position im Canvas wird bestimmt -//
+        Abschlussarbeit.xMousePosition = _event.clientX - Abschlussarbeit.canvasLeft;
+        Abschlussarbeit.yMousePosition = _event.clientY - Abschlussarbeit.canvasTop;
+        if (Abschlussarbeit.symbols.length != 0) {
+            console.log("es gibt ein element");
+            if (!Abschlussarbeit.isSymbolHit) {
+                detectSymbol();
+            }
+            else {
+                updateSymbol();
+            }
         }
         else {
-            detectSymbol();
+            console.log("es gibt kein elment");
         }
-        console.log("updateSymbolPos: " + updateSymbolPos);
+        // if(updateSymbolPos){
+        //     updateSymbol();
+        // }else{
+        //     detectSymbol();
+        // }
+        // console.log("updateSymbolPos: "+updateSymbolPos)
     }
-    function test(_event) {
-        let target = _event.target;
-        //console.log(target.id);
-    }
+    // function test(_event: MouseEvent):void{
+    //     let target: HTMLElement = <HTMLElement>_event.target;
+    //     //console.log(target.id);
+    // }
     function detectSymbol() {
-        for (let entry of symbols) {
-            if (entry.collisionDetection()) {
-                updateSymbolPos = true;
-            }
+        for (let entry of Abschlussarbeit.symbols) {
+            entry.collisionDetection();
+            console.log("isSymolHit: " + Abschlussarbeit.isSymbolHit);
         }
     }
     function updateSymbol() {
-        for (let entry of symbols) {
+        for (let entry of Abschlussarbeit.symbols) {
             if (entry.collision) {
                 entry.updatePosition();
-                entry.collision = false;
             }
         }
-        updateSymbolPos = false;
+        console.log("update symbol");
+        Abschlussarbeit.isSymbolHit = false;
     }
-    // function updateCanvas(_width: number): void{
-    //     //
-    // }
 })(Abschlussarbeit || (Abschlussarbeit = {}));
 //# sourceMappingURL=Main.js.map

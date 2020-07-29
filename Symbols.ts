@@ -1,7 +1,7 @@
 namespace Abschlussarbeit{
 
     export abstract class Symbols{
-        public color: String;
+        public color: string;
         public xPosition: number;
         public yPosition: number;
         public width: number;
@@ -9,16 +9,22 @@ namespace Abschlussarbeit{
         public collision: boolean = false;
 
         constructor(){
-            console.log("Symbols aufgerufen");
         }
 
-        public collisionDetection = (): boolean =>{
-            return false;
+        public draw = (): void =>{
+            console.log("draw");
         }
 
-        public updatePosition = () =>{
-            
+        public updatePosition = (): void =>{
+            console.log("updatePosition");
         }
 
+        public collisionDetection = () =>{
+            console.log("collisionDetection");
+        }
+
+        public animate = () =>{
+            console.log("animation")
+        }
     }
 }

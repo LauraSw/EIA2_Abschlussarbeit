@@ -70,7 +70,6 @@ path:hover, circle:hover{
 }
 
 #drawingCanvas{
-    background-color: black;
     border: none;
 }
 
@@ -129,4 +128,22 @@ path:hover, circle:hover{
     margin-bottom: 8px;
 }
 
+form{
+    margin-bottom: 16px;
+}
 
+#clearPicture{
+    width: 100%;
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    cursor: pointer;
+    background: peachpuff;
+    opacity: 1;
+    transition: all .2s ease-in-out;
+}
+
+#clearPicture:hover{
+    opacity: 0.6;
+    transition: all .2s ease-in-out;
+}

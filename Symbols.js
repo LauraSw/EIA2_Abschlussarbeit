@@ -4,12 +4,18 @@ var Abschlussarbeit;
     class Symbols {
         constructor() {
             this.collision = false;
-            this.collisionDetection = () => {
-                return false;
+            this.draw = () => {
+                console.log("draw");
             };
             this.updatePosition = () => {
+                console.log("updatePosition");
             };
-            console.log("Symbols aufgerufen");
+            this.collisionDetection = () => {
+                console.log("collisionDetection");
+            };
+            this.animate = () => {
+                console.log("animation");
+            };
         }
     }
     Abschlussarbeit.Symbols = Symbols;
