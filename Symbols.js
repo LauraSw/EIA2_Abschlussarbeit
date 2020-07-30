@@ -15,6 +15,14 @@ var Abschlussarbeit;
             };
             this.animate = () => {
                 console.log("animation");
+                let offset = new Abschlussarbeit.Vector(this.velocity.x, this.velocity.y);
+                offset.scale(1 / 30);
+                this.position.add(offset);
+                this.changePosition();
+            };
+            this.changePosition = () => {
+                this.xPosition = this.position.x;
+                this.yPosition = this.position.y;
             };
         }
     }

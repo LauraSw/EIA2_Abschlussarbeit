@@ -7,8 +7,12 @@ namespace Abschlussarbeit{
         public width: number;
         public height: number;
         public collision: boolean = false;
+        public radius: number
+        public position: Vector;
+        public velocity: Vector;
 
         constructor(){
+            
         }
 
         public draw = (): void =>{
@@ -19,12 +23,21 @@ namespace Abschlussarbeit{
             console.log("updatePosition");
         }
 
-        public collisionDetection = () =>{
+        public collisionDetection = (): void =>{
             console.log("collisionDetection");
         }
 
-        public animate = () =>{
-            console.log("animation")
+        public animate = (): void =>{
+            console.log("animation");
+            let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
+            offset.scale(1 / 30);
+            this.position.add(offset);
+            this.changePosition();
+        }
+
+        public changePosition = (): void =>{
+            this.xPosition = this.position.x;
+            this.yPosition = this.position.y
         }
     }
 }

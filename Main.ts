@@ -22,8 +22,6 @@ namespace Abschlussarbeit{
     let star: Star;
     let triangle: Triangle;
     let clearPicture: HTMLDivElement;
-    export let isSymbolHit: boolean = false;
-
 
     function handleLoad(_event: Event): void{
         //Canvas Set Up
@@ -31,20 +29,12 @@ namespace Abschlussarbeit{
         if (!canvasElement){
             return;
         } else{
-            
             crc2 = <CanvasRenderingContext2D>canvasElement.getContext("2d");
             canvasObject = new Canvas (800,400);
+            canvasElement.addEventListener("click", getMousePosition);
+            canvasElement.addEventListener("mousemove", snap);
         }
         
-
-        canvasElement?.addEventListener("click", getMousePosition);
-        
-
-        // canvasElement.width  = canvasElement.offsetWidth;
-        // canvasElement.height = canvasElement.offsetHeight;
-        // canvasLeft = canvasElement.offsetLeft + canvasElement.clientLeft;
-        // canvasTop = canvasElement.offsetTop + canvasElement.clientTop;
-
         //- Clear Canvas -//
         clearPicture = <HTMLDivElement>document.getElementById("clearPicture");
         clearPicture.addEventListener("click", function(){
@@ -54,7 +44,6 @@ namespace Abschlussarbeit{
             console.log(symbols);
         });
 
-
         //Change Width of Canvas
         canvasSmall = <HTMLDivElement>document.getElementById("canvasSmall");
         canvasSmall.addEventListener("click", function(){
@@ -62,68 +51,89 @@ namespace Abschlussarbeit{
                 canvasObject.set(400, "black")
             }
         });
+
         canvasMedium = <HTMLDivElement>document.getElementById("canvasMedium");
         canvasMedium.addEventListener("click", function(){
             if(canvasElement){                       
                 canvasObject.set(600, "red")
             }
         });
+
         canvasBig = <HTMLDivElement>document.getElementById("canvasBig");
         canvasBig.addEventListener("click", function(){
             if(canvasElement){                       
                 canvasObject.set(800, "green")
             }
         });
+        
 
         //Click SVG
-        // starSVG = <HTMLDivElement>document.getElementById("star");
-        // starSVG.addEventListener("click", function(){
-        //     symbols.push(new Star());
-        // });
-        // triangleSVG = <HTMLDivElement>document.getElementById("triangle");
-        // triangleSVG.addEventListener("click", function(){
-        //     symbols.push(new Triangle());
-        // });
+        starSVG = <HTMLDivElement>document.getElementById("star");
+        starSVG.addEventListener("click", function(){
+            symbols.push(new Star());
+            animate();
+        });
+
+        triangleSVG = <HTMLDivElement>document.getElementById("triangle");
+        triangleSVG.addEventListener("click", function(){
+            symbols.push(new Triangle());
+            animate();
+        });
 
         rectangleSVG = <HTMLDivElement>document.getElementById("rectangle");
         rectangleSVG.addEventListener("click", function(){
             symbols.push(new Rectangle());
+            animate();
         });
 
-        // // circleSVG = <HTMLDivElement>document.getElementById("circle");
-        // // circleSVG.addEventListener("click", function(){
-        // //     symbols.push(new Circle());
-        // // });
+        circleSVG = <HTMLDivElement>document.getElementById("circle");
+        circleSVG.addEventListener("click", function(){
+            symbols.push(new Circle());
+            animate();
+        });    
+    }
 
-        // //document.addEventListener("click", test);
-       
+    function snap(_event: MouseEvent): void{
+        xMousePosition = _event.clientX - canvasLeft;
+        yMousePosition = _event.clientY - canvasTop;
         
+        for (let entry of symbols) {
+            if(entry.collision){
+                entry.position.x = xMousePosition;
+                entry.position.y = yMousePosition;
+                canvasObject.drawCanvas();
+            }
+        }
     }
 
     function getMousePosition(_event: MouseEvent): void {
         //- Mouse Position im Canvas wird bestimmt -//
         xMousePosition = _event.clientX - canvasLeft;
         yMousePosition = _event.clientY - canvasTop;
-
+        
         if(symbols.length != 0){
-            console.log("es gibt ein element");
-            
-            if(!isSymbolHit){
-                detectSymbol();
-            }else{
-                updateSymbol();
+            for (let entry of symbols) {
+                entry.collisionDetection();
             }
-            
         }else{
             console.log("es gibt kein elment");
         }
-        // if(updateSymbolPos){
-        //     updateSymbol();
-        // }else{
-        //     detectSymbol();
-        // }
-        // console.log("updateSymbolPos: "+updateSymbolPos)
     }
+
+    function animate(): void{
+        
+        for (let entry of symbols) {
+            if(entry.collision){
+                continue;
+            }else{
+                window.setInterval(function(){
+                    entry.animate();
+                    canvasObject.drawCanvas();
+                }, 30);
+            }   
+        }
+    }
+
 
     // function test(_event: MouseEvent):void{
     //     let target: HTMLElement = <HTMLElement>_event.target;
@@ -133,7 +143,6 @@ namespace Abschlussarbeit{
     function detectSymbol():void{
         for (let entry of symbols) {
             entry.collisionDetection();
-            console.log("isSymolHit: "+isSymbolHit);
         }
     }
 
@@ -143,7 +152,5 @@ namespace Abschlussarbeit{
                 entry.updatePosition();
             }
         }
-        console.log("update symbol")
-        isSymbolHit = false;
     }
 }
