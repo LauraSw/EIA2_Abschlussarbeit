@@ -37,7 +37,7 @@ var Abschlussarbeit;
             this.radius = 40;
             this.position = new Abschlussarbeit.Vector(this.radius * 1.5, this.radius * 1.5);
             this.velocity = new Abschlussarbeit.Vector(20, 0);
-            this.color = "#ff0000";
+            this.color = "#DC504B";
             this.draw();
         }
     }

@@ -4,7 +4,6 @@ var Abschlussarbeit;
     class Triangle extends Abschlussarbeit.Symbols {
         constructor() {
             super();
-            this.radius = 20;
             this.draw = () => {
                 Abschlussarbeit.crc2.moveTo(this.position.x, this.position.y);
                 Abschlussarbeit.crc2.lineTo(this.position.x - (this.width / 2), this.position.y + this.height);
@@ -39,7 +38,7 @@ var Abschlussarbeit;
             };
             this.position = new Abschlussarbeit.Vector(50, 20);
             this.velocity = new Abschlussarbeit.Vector(20, 40);
-            this.color = "#FFCC00";
+            this.color = "#FAA050";
             this.width = 60;
             this.height = 60;
             this.draw();

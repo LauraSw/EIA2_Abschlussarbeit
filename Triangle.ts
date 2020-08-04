@@ -1,13 +1,12 @@
 namespace Abschlussarbeit{
 
     export class Triangle extends Symbols{
-        radius: number = 20;
 
         constructor(){
             super();
             this.position = new Vector(50,20);
             this.velocity = new Vector(20,40);
-            this.color = "#FFCC00";
+            this.color = "#FAA050";
             this.width = 60;
             this.height = 60;
             this.draw();

@@ -12,6 +12,7 @@
     <script src="Rectangle.js"></script>
     <script src="Triangle.js"></script>
     <script src="Main.js"></script>
+    <script src="Server.js"></script>
     <link rel="stylesheet" type="text/css" href="Abschlussarbeit.css"/>
     
 </head>
@@ -51,18 +52,16 @@
                     <h2>Preview</h2>
                     <div id="previewSettings">
                         <select id="previews">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="vw">VW</option>
-                            <option value="audi" selected>Audi</option>
+                            <option value="stellarconstellation">stellar Constellation</option>
+                            <option value="geometrischeformen">Geometrische Formen</option>
                         </select>
                     </div>
                 </div>
             </div>
             <div id="rightContainer">
                 <canvas id="drawingCanvas">Your browser does not support the HTML canvas tag.</canvas>
-                <form action="/action_page.php">
-                    <input type="text" id="pictureName" name="pictureName" placeholder="Mame your picture">
+                <form action="">
+                    <input type="text" id="pictureName" name="pictureName" placeholder="Name your picture">
                     <input type="submit" id="pictureCta" value="Save picture">
                 </form>
                 <div id="clearPicture">Clear the pricture</div>

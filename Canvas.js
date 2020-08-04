@@ -3,7 +3,7 @@ var Abschlussarbeit;
 (function (Abschlussarbeit) {
     class Canvas {
         constructor(_whidth, _height) {
-            this.background = "green";
+            this.background = "#AEC8E5";
             this.width = _whidth;
             this.height = _height;
             this.drawCanvas();

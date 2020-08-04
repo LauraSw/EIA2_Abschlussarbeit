@@ -8,7 +8,7 @@ namespace Abschlussarbeit{
             this.position = new Vector(20,20);
             this.velocity = new Vector(10,10);
             console.log(this.velocity.x)
-            this.color = "#00ff00";
+            this.color = "#D7E6AA";
             this.width = 20;
             this.height = 80;
             this.draw();

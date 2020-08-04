@@ -55,7 +55,7 @@ var Abschlussarbeit;
             };
             this.position = new Abschlussarbeit.Vector(50, 50);
             this.velocity = new Abschlussarbeit.Vector(5, 20);
-            this.color = "#0000ff";
+            this.color = "#FAC83C";
             this.height = 50;
             this.width = 50;
             this.draw();

@@ -3,7 +3,7 @@ namespace Abschlussarbeit{
     export class Canvas{
         public width: number;
         public height: number;
-        public background: string ="green";
+        public background: string ="#AEC8E5";
 
         constructor(_whidth: number, _height: number){
             this.width = _whidth;

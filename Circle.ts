@@ -7,7 +7,7 @@ namespace Abschlussarbeit{
             this.radius = 40;
             this.position = new Vector(this.radius*1.5,this.radius*1.5);
             this.velocity = new Vector(20,0);
-            this.color = "#ff0000";
+            this.color = "#DC504B";
             this.draw();
         }
 

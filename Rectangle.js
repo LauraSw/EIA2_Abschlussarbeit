@@ -37,7 +37,7 @@ var Abschlussarbeit;
             this.position = new Abschlussarbeit.Vector(20, 20);
             this.velocity = new Abschlussarbeit.Vector(10, 10);
             console.log(this.velocity.x);
-            this.color = "#00ff00";
+            this.color = "#D7E6AA";
             this.width = 20;
             this.height = 80;
             this.draw();

@@ -17,10 +17,6 @@ namespace Abschlussarbeit{
     export let yMousePosition: number;
     export let xMousePosition: number;
     export let symbols: Symbols[] = [];
-    let circle: Circle;
-    let rectangle: Rectangle;
-    let star: Star;
-    let triangle: Triangle;
     let clearPicture: HTMLDivElement;
 
     function handleLoad(_event: Event): void{
@@ -48,21 +44,21 @@ namespace Abschlussarbeit{
         canvasSmall = <HTMLDivElement>document.getElementById("canvasSmall");
         canvasSmall.addEventListener("click", function(){
             if(canvasElement){                       
-                canvasObject.set(400, "black")
+                canvasObject.set(400, "#282828")
             }
         });
 
         canvasMedium = <HTMLDivElement>document.getElementById("canvasMedium");
         canvasMedium.addEventListener("click", function(){
             if(canvasElement){                       
-                canvasObject.set(600, "red")
+                canvasObject.set(600, "#F6E2A2")
             }
         });
 
         canvasBig = <HTMLDivElement>document.getElementById("canvasBig");
         canvasBig.addEventListener("click", function(){
             if(canvasElement){                       
-                canvasObject.set(800, "green")
+                canvasObject.set(800, "#AEC8E5")
             }
         });
         
@@ -131,26 +127,6 @@ namespace Abschlussarbeit{
                     canvasObject.drawCanvas();
                 }, 30);
             }   
-        }
-    }
-
-
-    // function test(_event: MouseEvent):void{
-    //     let target: HTMLElement = <HTMLElement>_event.target;
-    //     //console.log(target.id);
-    // }
-
-    function detectSymbol():void{
-        for (let entry of symbols) {
-            entry.collisionDetection();
-        }
-    }
-
-    function updateSymbol(): void{
-        for (let entry of symbols) {
-            if(entry.collision){
-                entry.updatePosition();
-            }
         }
     }
 }
